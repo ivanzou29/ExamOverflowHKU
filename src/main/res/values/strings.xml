@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ExamOverflow@HKU</string>
+    <string name="enter_uid">UID</string>
+    <string name="enter_password">Password</string>
+    <string name="login">Log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="processing">Processing…</string>
+    <string name="logging_in">Logging in…</string>
+    <string name="enter_hku_email">HKU email (MUST BE VALID)</string>
+    <string name="enter_name">Name</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="enter_token_code">Token code</string>
+    <string name="send_token">Send token to email</string>
+    <string name="sending_token">Sending token to email…</string>
+    <string name="signing_up">Signing up…</string>
+    <string name="label_login">ExamOverflow@HKU - Log In</string>
+    <string name="label_signup">ExamOverflow@HKU - Registration</string>
+    <string name="label_search">ExamOverflow@HKU - Search</string>
+</resources>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signup_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/enter_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/enter_hku_email"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/email_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorTextInput"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/enter_uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/enter_uid"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="@color/colorTextInput"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/enter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/enter_name"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@color/colorTextInput"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/enter_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/enter_password"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/first_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@color/colorTextInput"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/confirm_password"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/second_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@color/colorTextInput"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/enter_token"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/enter_token_code"
+        android:textColor="@color/colorTextView"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/token"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="@color/colorTextInput"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/get_token_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:background="@color/loginButton"
+            android:text="@string/send_token"
+            android:textColor="@color/loginButtonText"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:background="@color/signupButton"
+        android:text="@string/sign_up"
+        android:textColor="@color/signupButtonText"
+        android:textSize="15sp"/>
+
+
+</LinearLayout>
