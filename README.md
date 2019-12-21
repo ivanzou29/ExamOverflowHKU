@@ -1,2 +1,2 @@
 # ExamOverflowHKU
-A platform for HKU students to discuss the solutions of past final exam papers.
+An Android platform for HKU students to discuss the solutions of past final exam papers.
