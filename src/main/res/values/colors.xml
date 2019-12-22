@@ -8,8 +8,9 @@
     <color name="colorTextInput">#2B8C99</color>
     <color name="loginButton">#296FD8</color>
     <color name="signupButton">#19D600</color>
-    <color name="backButton">#C40303</color>
+    <color name="logoutButton">#C40303</color>
     <color name="loginButtonText">#FFFFFF</color>
     <color name="signupButtonText">#FFFFFF</color>
-    <color name="backButtonText">#FFFFFF</color>
+    <color name="logoutButtonText">#FFFFFF</color>
+    <color name="colorSearchButton">#009688</color>
 </resources>

@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
             Bundle extras = getIntent().getExtras();
             loggingOut = extras.getBoolean("loggingOut");
         } catch (Exception e) {
+
         }
 
         uidText = findViewById(R.id.get_uid);
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                             jdbcUtilities.openConnection();
                             String realPassword = jdbcUtilities.getPasswordByUid(uid);
                             String name = jdbcUtilities.getNameByUid(uid);
+                            int unlocks = jdbcUtilities.getUnlocksByUid(uid);
                             jdbcUtilities.closeConnection();
                             if (realPassword.equals(password)) {
                                 SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
@@ -70,14 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("password", password);
                                 editor.putString("name", name);
                                 editor.apply();
-                                loggingInDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, name + " logged in successfully!", Toast.LENGTH_LONG).show();
-                                // TODO: add new activity after logging in
-                                // Intent myIntent = new Intent(v.getContext(), MainPage.class);
-                                // myIntent.putExtra("email", eStr);
-                                // startActivity(myIntent);
+                                Intent myIntent = new Intent(v.getContext(), SearchActivity.class);
+                                myIntent.putExtra("unlocks", unlocks);
+                                startActivity(myIntent);
                             } else {
-                                loggingInDialog.dismiss();
                                 AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
                                 alertDialog.setTitle("Authentication failed!");
                                 alertDialog.setMessage("The UID and password entered by you do not match. Please sign up if you do not have an account yet.");
@@ -91,7 +90,6 @@ public class LoginActivity extends AppCompatActivity {
                                 alertDialog.show();
                             }
                         } catch (Exception e) {
-                            loggingInDialog.dismiss();
                             AlertDialog alertDialog = new AlertDialog.Builder(LoginActivity.this).create();
                             alertDialog.setTitle("Server connection failed!");
                             alertDialog.setMessage("Check your network connection or notify \"examoverflow@126.com\" the issue if your network connection has no problem.");

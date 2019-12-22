@@ -104,6 +104,25 @@ public class JDBCUtilities {
         }
     }
 
+    public int getUnlocksByUid(String uid) {
+        String sql = "SELECT Unlocks FROM Unlocks WHERE uid = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, uid);
+            ResultSet rs = ptmt.executeQuery();
+            if (rs.next()) {
+                int unlocks = rs.getInt("unlocks");
+                ptmt.close();
+                return unlocks;
+            } else {
+                return -1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
     public void closeConnection() {
         try {
             conn.close();

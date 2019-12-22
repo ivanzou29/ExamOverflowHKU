@@ -2,6 +2,7 @@ package hk.hku.examoverflowhku;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class SignupActivity extends AppCompatActivity {
     ProcessingDialog signingUpDialog;
 
     String tokenSent;
+
+    static final int INITIAL_UNLOCKS = 5;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,9 +112,8 @@ public class SignupActivity extends AppCompatActivity {
                                 jdbcUtilities = new JDBCUtilities();
                                 jdbcUtilities.openConnection();
                                 jdbcUtilities.insertStudent(student);
-                                jdbcUtilities.insertUnlocks(uid, 5);
+                                jdbcUtilities.insertUnlocks(uid, INITIAL_UNLOCKS);
                                 jdbcUtilities.closeConnection();
-                                signingUpDialog.dismiss();
                                 SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
@@ -120,9 +122,10 @@ public class SignupActivity extends AppCompatActivity {
                                 editor.putString("name", name);
                                 editor.apply();
                                 Toast.makeText(SignupActivity.this, "Sign up successful!", Toast.LENGTH_LONG).show();
-                                // TODO: add new activity
+                                Intent myIntent = new Intent(v.getContext(), SearchActivity.class);
+                                myIntent.putExtra("unlocks", INITIAL_UNLOCKS);
+                                startActivity(myIntent);
                             } catch (SQLException e) {
-                                signingUpDialog.dismiss();
                                 AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
                                 alertDialog.setTitle("Duplication registration!");
                                 alertDialog.setMessage("It seems the UID or the email have been used for registration before.");
@@ -133,7 +136,6 @@ public class SignupActivity extends AppCompatActivity {
                                             }
                                         });
                             } catch (NullPointerException e) {
-                                signingUpDialog.dismiss();
                                 AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
                                 alertDialog.setTitle("Server failure!");
                                 alertDialog.setMessage("Check your network connection or contact \"examoverflow@126.com\".");
@@ -145,7 +147,6 @@ public class SignupActivity extends AppCompatActivity {
                                         });
                             }
                         } else {
-                            signingUpDialog.dismiss();
                             AlertDialog alertDialog = new AlertDialog.Builder(SignupActivity.this).create();
                             alertDialog.setTitle("Sign up failed!");
                             alertDialog.setMessage("The two lines of password entered by you do not match, or your have entered the incorrect token.");

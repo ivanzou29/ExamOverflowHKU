@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,4 +8,115 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/greeting_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Hello "
+                android:textColor="@color/colorTextView"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/unlock_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="  Your unlocks available: "
+                android:textColor="@color/colorTextView"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/log_out_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="@string/log_out"
+                android:background="@color/logoutButton"
+                android:textColor="@color/logoutButtonText"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/enter_course_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_course_code"
+            android:layout_margin="30dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextView"/>
+
+        <EditText
+            android:id="@+id/course_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="text"
+            android:text=""
+            android:textSize="18sp"
+            android:textColor="@color/colorTextInput"/>
+
+        <TextView
+            android:id="@+id/choose_academic_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="@string/choose_academic_year"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextView"/>
+
+        <Spinner
+            android:id="@+id/academic_year_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:entries="@array/academic_year_array"
+            android:prompt="@string/academic_year_prompt"
+            android:textColor="@color/colorTextInput"/>
+
+        <TextView
+            android:id="@+id/choose_semester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:text="@string/choose_semester"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextView"/>
+
+        <Spinner
+            android:id="@+id/semester_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:entries="@array/semester_array"
+            android:prompt="@string/semester_prompt"
+            android:textColor="@color/colorTextInput"/>
+
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:srcCompat="@android:drawable/ic_menu_search"
+            android:textSize="18sp"
+            android:background="@color/colorSearchButton"/>
+
+    </LinearLayout>
 </LinearLayout>
