@@ -13,4 +13,11 @@
     <color name="signupButtonText">#FFFFFF</color>
     <color name="logoutButtonText">#FFFFFF</color>
     <color name="colorSearchButton">#009688</color>
+    <color name="inspectButtonText">#FFFFFF</color>
+
+    <color name="addQuestionButton">#4CAF50</color>
+    <color name="addQuestionButtonText">#FFFFFF</color>
+
+    <color name="backToSearchButton">#197D8D</color>
+    <color name="backToSearchButtonText">#FFFFFF</color>
 </resources>

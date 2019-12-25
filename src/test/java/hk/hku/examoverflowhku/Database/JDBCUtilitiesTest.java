@@ -37,4 +37,12 @@ public class JDBCUtilitiesTest {
         System.out.println(password);
     }
 
+    @Test
+    public void getCourseTitleByCourseCode_ShouldReturnValidCourseTitle() {
+        JDBCUtilities jdbcUtilities = new JDBCUtilities();
+        jdbcUtilities.openConnection();
+        String courseTitle = jdbcUtilities.getCourseTitleByCourseCode("COMP3297");
+        System.out.println(courseTitle);
+    }
+
 }

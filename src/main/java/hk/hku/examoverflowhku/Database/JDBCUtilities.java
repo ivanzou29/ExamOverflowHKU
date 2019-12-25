@@ -8,7 +8,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 
+import hk.hku.examoverflowhku.Model.Course;
 import hk.hku.examoverflowhku.Model.Student;
 
 public class JDBCUtilities {
@@ -120,6 +122,25 @@ public class JDBCUtilities {
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+
+    public String getCourseTitleByCourseCode(String courseCode) {
+        String sql = "SELECT course_title FROM Course WHERE course_code = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, courseCode);
+            ResultSet rs = ptmt.executeQuery();
+            if (rs.next()) {
+                String courseTitle = rs.getString("course_title");
+                ptmt.close();
+                return courseTitle;
+            } else {
+                return "The course has not been recorded yet.";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error connecting to database, please go back and try again later.";
         }
     }
 

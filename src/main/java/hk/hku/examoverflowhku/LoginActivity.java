@@ -29,6 +29,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        uidText = findViewById(R.id.get_uid);
+        passwordText = findViewById(R.id.get_password);
+
+        View view = View.inflate(this, R.layout.activity_login, null);
+        loggingInDialog = new ProcessingDialog(view, R.string.logging_in);
+
+
         boolean loggingOut = false;
         try {
             Bundle extras = getIntent().getExtras();
@@ -37,11 +45,29 @@ public class LoginActivity extends AppCompatActivity {
 
         }
 
-        uidText = findViewById(R.id.get_uid);
-        passwordText = findViewById(R.id.get_password);
+        if (!loggingOut) {
+            loggingInDialog.show();
+            try {
+                SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
+                String uid = sharedPreferences.getString("uid", "");
+                String name = sharedPreferences.getString("name", "");
 
-        View view = View.inflate(this, R.layout.activity_login, null);
-        loggingInDialog = new ProcessingDialog(view, R.string.logging_in);
+                jdbcUtilities = new JDBCUtilities();
+                jdbcUtilities.openConnection();
+                int unlocks = jdbcUtilities.getUnlocksByUid(uid);
+                jdbcUtilities.closeConnection();
+
+                loggingInDialog.dismiss();
+                Toast.makeText(LoginActivity.this, name + " logged in successfully!", Toast.LENGTH_LONG).show();
+                Intent myIntent = new Intent(LoginActivity.this, SearchActivity.class);
+                myIntent.putExtra("unlocks", unlocks);
+                startActivity(myIntent);
+
+
+            } catch (Exception e) {
+                loggingInDialog.dismiss();
+            }
+        }
 
 
         loginButton = findViewById(R.id.log_in_button);
@@ -67,9 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (realPassword.equals(password)) {
                                 SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.clear();
                                 editor.putString("uid", uid);
-                                editor.putString("password", password);
                                 editor.putString("name", name);
                                 editor.apply();
                                 Toast.makeText(LoginActivity.this, name + " logged in successfully!", Toast.LENGTH_LONG).show();

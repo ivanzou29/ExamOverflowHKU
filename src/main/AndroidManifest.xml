@@ -28,6 +28,9 @@
         <activity
             android:name=".SearchActivity"
             android:label="@string/label_search"/>
+        <activity
+            android:name=".QuestionActivity"
+            android:label="@string/label_question"/>
 
     </application>
 

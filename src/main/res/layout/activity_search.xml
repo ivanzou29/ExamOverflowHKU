@@ -36,16 +36,6 @@
                 android:textColor="@color/colorTextView"
                 android:textSize="15sp"/>
 
-            <Button
-                android:id="@+id/log_out_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="@string/log_out"
-                android:background="@color/logoutButton"
-                android:textColor="@color/logoutButtonText"
-                android:textSize="15sp"/>
         </LinearLayout>
 
         <TextView
@@ -53,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/enter_course_code"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:textSize="18sp"
             android:textColor="@color/colorTextView"/>
 
@@ -61,19 +51,18 @@
             android:id="@+id/course_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:ems="10"
             android:gravity="center"
             android:inputType="text"
             android:text=""
-            android:textSize="18sp"
-            android:textColor="@color/colorTextInput"/>
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/choose_academic_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:text="@string/choose_academic_year"
             android:textSize="18sp"
             android:textColor="@color/colorTextView"/>
@@ -82,18 +71,17 @@
             android:id="@+id/academic_year_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="18sp"
             android:entries="@array/academic_year_array"
-            android:prompt="@string/academic_year_prompt"
-            android:textColor="@color/colorTextInput"/>
+            android:prompt="@string/academic_year_prompt"/>
 
         <TextView
             android:id="@+id/choose_semester"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:text="@string/choose_semester"
             android:textSize="18sp"
             android:textColor="@color/colorTextView"/>
@@ -102,21 +90,31 @@
             android:id="@+id/semester_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
             android:textSize="18sp"
             android:entries="@array/semester_array"
-            android:prompt="@string/semester_prompt"
-            android:textColor="@color/colorTextInput"/>
+            android:prompt="@string/semester_prompt"/>
 
         <ImageButton
             android:id="@+id/search_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             app:srcCompat="@android:drawable/ic_menu_search"
             android:textSize="18sp"
             android:background="@color/colorSearchButton"/>
+
+        <Button
+            android:id="@+id/log_out_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/logoutButton"
+            android:gravity="center"
+            android:text="@string/log_out"
+            android:textColor="@color/logoutButtonText"
+            android:textSize="15sp" />
 
     </LinearLayout>
 </LinearLayout>

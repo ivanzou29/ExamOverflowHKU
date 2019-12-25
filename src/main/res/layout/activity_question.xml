@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/greeting_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Hello "
+            android:textColor="@color/colorTextView"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/unlock_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="  Your unlocks available: "
+            android:textColor="@color/colorTextView"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/course_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="Course code and course title"
+        android:textSize="20sp"
+        android:textColor="@color/colorTextView"/>
+
+    <TextView
+        android:id="@+id/academic_year_and_semester_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="Academic year and semester"
+        android:textSize="20sp"
+        android:textColor="@color/colorTextView"/>
+
+    <TextView
+        android:id="@+id/question_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/questions_header"
+        android:textSize="20sp"
+        android:textColor="@color/colorTextView"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/q1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q1_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q1"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q1_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/q2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q2_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q2"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q2_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/q3_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q3_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q3"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q3_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/q4_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q4_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q4"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q4_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/q5_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q5_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q5"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q5_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/q6_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/q6_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Q6"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextInput"/>
+                <Button
+                    android:id="@+id/q6_inspect_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/inspectButtonText"
+                    android:text="Inspect"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/add_question_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/addQuestionButton"
+        android:gravity="center"
+        android:text="@string/add_question"
+        android:textColor="@color/addQuestionButtonText"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/back_to_search_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/backToSearchButton"
+        android:gravity="center"
+        android:text="@string/back_to_search"
+        android:textColor="@color/backToSearchButtonText"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/log_out_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/logoutButton"
+        android:gravity="center"
+        android:text="@string/log_out"
+        android:textColor="@color/logoutButtonText"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

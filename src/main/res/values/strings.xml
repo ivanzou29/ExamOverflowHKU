@@ -13,13 +13,19 @@
     <string name="send_token">Send token to email</string>
     <string name="sending_token">Sending token to email…</string>
     <string name="signing_up">Signing up…</string>
+
     <string name="label_login">ExamOverflow@HKU - Log In</string>
     <string name="label_signup">ExamOverflow@HKU - Registration</string>
     <string name="label_search">ExamOverflow@HKU - Search</string>
+    <string name="label_question">ExamOverflow@HKU - Questions</string>
+
     <string name="log_out">Log out</string>
     <string name="enter_course_code">Course code</string>
     <string name="choose_academic_year">Academic Year</string>
     <string name="choose_semester">Semester</string>
+
+    <string name="add_question">Add an exam question</string>
+    <string name="back_to_search">Go back to search</string>
 
 
     <string name="academic_year_prompt">select an academic year</string>
@@ -41,4 +47,8 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string name="questions_header">Questions</string>
+
+    <string name="searching">Searching for course…</string>
 </resources>

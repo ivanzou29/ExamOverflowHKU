@@ -118,7 +118,6 @@ public class SignupActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
                                 editor.putString("uid", uid);
-                                editor.putString("password", firstPassword);
                                 editor.putString("name", name);
                                 editor.apply();
                                 Toast.makeText(SignupActivity.this, "Sign up successful!", Toast.LENGTH_LONG).show();
