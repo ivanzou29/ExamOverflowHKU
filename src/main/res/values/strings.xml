@@ -6,6 +6,7 @@
     <string name="sign_up">Sign up</string>
     <string name="processing">Processing…</string>
     <string name="logging_in">Logging in…</string>
+    <string name="waiting_login">Recovering user state…</string>
     <string name="enter_hku_email">HKU email (MUST BE VALID)</string>
     <string name="enter_name">Name</string>
     <string name="confirm_password">Confirm password</string>
@@ -52,4 +53,6 @@
 
     <string name="searching">Searching for course…</string>
     <string name="adding_question">Adding exam question number…</string>
+    <string name="inspect_question">Inspect</string>
+    <string name="preparing_question_layout">Preparing layout…</string>
 </resources>

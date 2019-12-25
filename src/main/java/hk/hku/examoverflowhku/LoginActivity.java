@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     Button signupButton;
     ProcessingDialog loggingInDialog;
+    ProcessingDialog waitingSharedPreferenceDialog;
 
     JDBCUtilities jdbcUtilities;
 
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
         View view = View.inflate(this, R.layout.activity_login, null);
         loggingInDialog = new ProcessingDialog(view, R.string.logging_in);
+        waitingSharedPreferenceDialog = new ProcessingDialog(view, R.string.waiting_login);
 
 
         boolean loggingOut = false;
@@ -46,27 +48,35 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (!loggingOut) {
-            loggingInDialog.show();
-            try {
-                SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
-                String uid = sharedPreferences.getString("uid", "");
-                String name = sharedPreferences.getString("name", "");
+            waitingSharedPreferenceDialog.show();
 
-                jdbcUtilities = new JDBCUtilities();
-                jdbcUtilities.openConnection();
-                int unlocks = jdbcUtilities.getUnlocksByUid(uid);
-                jdbcUtilities.closeConnection();
+            findViewById(R.id.login_root_view).post(new Runnable(){
 
-                loggingInDialog.dismiss();
-                Toast.makeText(LoginActivity.this, name + " logged in successfully!", Toast.LENGTH_LONG).show();
-                Intent myIntent = new Intent(LoginActivity.this, SearchActivity.class);
-                myIntent.putExtra("unlocks", unlocks);
-                startActivity(myIntent);
+                @Override
+                public void run() {
+                    try {
+                        SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
+                        String uid = sharedPreferences.getString("uid", "");
+                        String name = sharedPreferences.getString("name", "");
+
+                        jdbcUtilities = new JDBCUtilities();
+                        jdbcUtilities.openConnection();
+                        int unlocks = jdbcUtilities.getUnlocksByUid(uid);
+                        jdbcUtilities.closeConnection();
+
+                        Toast.makeText(LoginActivity.this, name + " logged in successfully!", Toast.LENGTH_LONG).show();
+                        Intent myIntent = new Intent(LoginActivity.this, SearchActivity.class);
+                        myIntent.putExtra("unlocks", unlocks);
+                        startActivity(myIntent);
+                        waitingSharedPreferenceDialog.dismiss();
 
 
-            } catch (Exception e) {
-                loggingInDialog.dismiss();
-            }
+                    } catch (Exception e) {
+                        waitingSharedPreferenceDialog.dismiss();
+                        Toast.makeText(LoginActivity.this, "You might need to re-enter your credentials.", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
         }
 
 
