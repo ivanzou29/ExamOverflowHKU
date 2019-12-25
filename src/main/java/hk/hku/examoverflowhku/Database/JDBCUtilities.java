@@ -8,9 +8,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
-import hk.hku.examoverflowhku.Model.Course;
+import hk.hku.examoverflowhku.Model.Question;
 import hk.hku.examoverflowhku.Model.Student;
 
 public class JDBCUtilities {
@@ -136,11 +137,73 @@ public class JDBCUtilities {
                 ptmt.close();
                 return courseTitle;
             } else {
-                return "The course has not been recorded yet.";
+                return null;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return "Error connecting to database, please go back and try again later.";
+            return null;
+        }
+    }
+
+    public void insertQuestion(Question question) {
+        String sql = "INSERT INTO Question (course_code, academic_year, semester, question_num, question_id) " +
+                "VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, question.getCourseCode());
+            ptmt.setString(2, question.getAcademicYear());
+            ptmt.setInt(3, question.getSemester());
+            ptmt.setInt(4, question.getQuestionNum());
+            ptmt.setString(5, question.getQuestionId());
+            ptmt.execute();
+            ptmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getQuestionId(String courseCode, String academicYear, int semester, int question_num) {
+        String sql = "SELECT question_id FROM Question WHERE course_code = ? AND academic_year = ? AND semester = ? AND question_num = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, courseCode);
+            ptmt.setString(2, academicYear);
+            ptmt.setInt(3, semester);
+            ptmt.setInt(4, question_num);
+            ResultSet rs = ptmt.executeQuery();
+            if (rs.next()) {
+                String questionId = rs.getString("question_id");
+                ptmt.close();
+                return questionId;
+            } else {
+                return "System error";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "System error";
+        }
+    }
+
+    public Collection<Integer> getQuestionNums(String courseCode, String academicYear, int semester) {
+        String sql = "SELECT question_num FROM Question WHERE course_code = ? AND academic_year = ? AND semester = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, courseCode);
+            ptmt.setString(2, academicYear);
+            ptmt.setInt(3, semester);
+            ResultSet rs = ptmt.executeQuery();
+
+            ArrayList<Integer> questionNums = new ArrayList<Integer>();
+
+            while (rs.next()) {
+                questionNums.add(rs.getInt("question_num"));
+            }
+
+            return questionNums;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Integer>();
         }
     }
 

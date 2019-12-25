@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import hk.hku.examoverflowhku.Database.JDBCUtilities;
@@ -79,30 +80,29 @@ public class SearchActivity extends AppCompatActivity {
                             String courseCode = courseCodeText.getText().toString();
                             String academicYear = chooseAcademicYearSpinner.getSelectedItem().toString();
                             String semester = chooseSemesterSpinner.getSelectedItem().toString();
+
                             jdbcUtilities = new JDBCUtilities();
                             jdbcUtilities.openConnection();
                             String courseTitle = jdbcUtilities.getCourseTitleByCourseCode(courseCode);
                             jdbcUtilities.closeConnection();
 
-                            searchingDialog.dismiss();
-                            Intent myIntent = new Intent(SearchActivity.this, QuestionActivity.class);
-                            myIntent.putExtra("courseCode", courseCode);
-                            myIntent.putExtra("courseTitle", courseTitle);
-                            myIntent.putExtra("unlocks", unlocks);
-                            myIntent.putExtra("academicYear", academicYear);
-                            myIntent.putExtra("semester", semester);
-                            startActivity(myIntent);
+                            if (courseTitle != null) {
+                                Intent myIntent = new Intent(SearchActivity.this, QuestionActivity.class);
+                                myIntent.putExtra("courseCode", courseCode);
+                                myIntent.putExtra("courseTitle", courseTitle);
+                                myIntent.putExtra("unlocks", unlocks);
+                                myIntent.putExtra("academicYear", academicYear);
+                                myIntent.putExtra("semester", semester);
+                                startActivity(myIntent);
+                                searchingDialog.dismiss();
+                            } else {
+                                searchingDialog.dismiss();
+                                Toast.makeText(SearchActivity.this, "Course does not exist or server connection failed.", Toast.LENGTH_LONG).show();
+                            }
                         } catch (Exception e) {
                             searchingDialog.dismiss();
-                            AlertDialog alertDialog = new AlertDialog.Builder(SearchActivity.this).create();
-                            alertDialog.setTitle("Unknown Exception!");
-                            alertDialog.setMessage("Check your network connection or notify \"examoverflow@126.com\" the issue.");
-                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Acknowledged",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    });
+                            Toast.makeText(SearchActivity.this, "Unknown failure. Please connect examoverflow@126.com for help or try again later.", Toast.LENGTH_LONG).show();
+
                         }
                     }
                 });
