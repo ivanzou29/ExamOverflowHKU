@@ -1,9 +1,21 @@
 package hk.hku.examoverflowhku.Model;
 
+import net.sourceforge.jtds.jdbc.DateTime;
+
 public class Discussion {
     private String issueTitle;
     private String discussionId;
     private String discussionContent;
+
+    public DateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(DateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    private DateTime timestamp;
 
     public String getIssueTitle() {
         return issueTitle;

@@ -31,6 +31,9 @@
         <activity
             android:name=".QuestionActivity"
             android:label="@string/label_question"/>
+        <activity
+            android:name=".SolutionActivity"
+            android:label="@string/label_solution"/>
 
     </application>
 

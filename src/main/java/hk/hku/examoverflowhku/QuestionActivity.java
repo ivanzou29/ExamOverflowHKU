@@ -47,6 +47,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     ProcessingDialog preparingDialog;
     ProcessingDialog addingQuestionDialog;
+    ProcessingDialog inspectQuestionDialog;
 
     JDBCUtilities jdbcUtilities;
 
@@ -91,6 +92,7 @@ public class QuestionActivity extends AppCompatActivity {
         View view = View.inflate(this, R.layout.activity_question, null);
         addingQuestionDialog = new ProcessingDialog(view, R.string.adding_question);
         preparingDialog = new ProcessingDialog(view, R.string.preparing_question_layout);
+        inspectQuestionDialog = new ProcessingDialog(view, R.string.inspecting_question);
 
         preparingDialog.show();
         findViewById(R.id.question_root_view).post(new Runnable() {
@@ -221,7 +223,7 @@ public class QuestionActivity extends AppCompatActivity {
 
                 questionLayout.setLayoutParams(paramsLayout);
 
-                TextView questionNumberTextView = new TextView(this);
+                final TextView questionNumberTextView = new TextView(this);
                 questionNumberTextView.setText("Question " + Integer.toString(questionNums.get(i)));
                 questionNumberTextView.setTextColor(getColor(R.color.colorTextInput));
                 questionNumberTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
@@ -233,6 +235,43 @@ public class QuestionActivity extends AppCompatActivity {
                 questionInspectButton.setBackgroundColor(getColor(R.color.colorAccent));
                 questionInspectButton.setTextColor(getColor(R.color.inspectButtonText));
                 questionInspectButton.setGravity(Gravity.CENTER);
+
+                final String questionTitle = questionNumberTextView.getText().toString();
+                final int questionNum = Integer.parseInt(questionTitle.substring(9));
+
+                questionInspectButton.setOnClickListener(new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View view) {
+                        inspectQuestionDialog.show();
+                        findViewById(R.id.question_root_view).post(new Runnable(){
+
+                            @Override
+                            public void run() {
+                                try {
+                                    String questionId = jdbcUtilities.getQuestionId(courseCode, academicYear, Integer.parseInt(semester), questionNum);
+
+                                    Intent myIntent = new Intent(QuestionActivity.this, SolutionActivity.class);
+                                    myIntent.putExtra("courseCode", courseCode);
+                                    myIntent.putExtra("courseTitle", courseTitle);
+                                    myIntent.putExtra("unlocks", unlocks);
+                                    myIntent.putExtra("academicYear", academicYear);
+                                    myIntent.putExtra("semester", semester);
+                                    myIntent.putExtra("questionId", questionId);
+                                    myIntent.putExtra("questionTitle", questionTitle);
+                                    startActivity(myIntent);
+
+                                    inspectQuestionDialog.dismiss();
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    inspectQuestionDialog.dismiss();
+                                    Toast.makeText(QuestionActivity.this, "Unknown failure. Please connect examoverflow@126.com for help or try again later.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                });
 
                 questionLayout.addView(questionNumberTextView);
                 questionLayout.addView(questionInspectButton);
