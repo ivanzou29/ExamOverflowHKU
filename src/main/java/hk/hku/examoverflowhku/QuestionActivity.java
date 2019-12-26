@@ -26,7 +26,6 @@ import hk.hku.examoverflowhku.UI.ProcessingDialog;
 
 public class QuestionActivity extends AppCompatActivity {
     TextView greetingTextView;
-    TextView unlockTextView;
 
     TextView courseInfoView;
     TextView yearSemView;
@@ -44,6 +43,7 @@ public class QuestionActivity extends AppCompatActivity {
     String courseTitle;
     String academicYear;
     String semester;
+    String uid;
 
     ProcessingDialog preparingDialog;
     ProcessingDialog addingQuestionDialog;
@@ -65,13 +65,12 @@ public class QuestionActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("config", 0);
         name = sharedPreferences.getString("name", "");
+        uid = sharedPreferences.getString("uid", "");
 
 
         greetingTextView = findViewById(R.id.greeting_text_view);
-        unlockTextView = findViewById(R.id.unlock_remaining);
 
         greetingTextView.setText(greetingTextView.getText().toString() + name + "!");
-        unlockTextView.setText(unlockTextView.getText().toString() + Integer.toString(unlocks) + ".");
 
         courseInfoView = findViewById(R.id.course_title_view);
         courseInfoView.setText(courseCode + ": " + courseTitle);
@@ -95,7 +94,7 @@ public class QuestionActivity extends AppCompatActivity {
         inspectQuestionDialog = new ProcessingDialog(view, R.string.inspecting_question);
 
         preparingDialog.show();
-        findViewById(R.id.question_root_view).post(new Runnable() {
+        findViewById(R.id.solution_root_view).post(new Runnable() {
 
             @Override
             public void run() {
@@ -120,7 +119,7 @@ public class QuestionActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         addingQuestionDialog.show();
-                        findViewById(R.id.question_root_view).post(new Runnable() {
+                        findViewById(R.id.solution_root_view).post(new Runnable() {
 
                             @Override
                             public void run() {
@@ -244,13 +243,14 @@ public class QuestionActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         inspectQuestionDialog.show();
-                        findViewById(R.id.question_root_view).post(new Runnable(){
+                        findViewById(R.id.solution_root_view).post(new Runnable(){
 
                             @Override
                             public void run() {
                                 try {
                                     String questionId = jdbcUtilities.getQuestionId(courseCode, academicYear, Integer.parseInt(semester), questionNum);
-
+                                    unlocks = jdbcUtilities.getUnlocksByUid(uid);
+                                    jdbcUtilities.closeConnection();
                                     Intent myIntent = new Intent(QuestionActivity.this, SolutionActivity.class);
                                     myIntent.putExtra("courseCode", courseCode);
                                     myIntent.putExtra("courseTitle", courseTitle);

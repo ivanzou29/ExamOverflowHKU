@@ -2,23 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/solution_root_view">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/greeting_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Hello "
-            android:textColor="@color/colorTextView"
-            android:textSize="8sp"/>
-
-    </LinearLayout>
+    android:id="@+id/discussion_root_view">
 
     <TextView
         android:id="@+id/course_title_view"
@@ -28,73 +12,98 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="Course code and course title"
-        android:textSize="15sp"
-        android:textColor="@color/colorTextView"/>
-
-    <TextView
-        android:id="@+id/academic_year_and_semester_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="Academic year and semester"
         android:textSize="10sp"
         android:textColor="@color/colorTextView"/>
 
     <TextView
-        android:id="@+id/question_title_view"
+        android:id="@+id/academic_year_and_semester_and_question_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/questions_header"
-        android:textSize="20sp"
+        android:text="Academic year and semester and Q.No."
+        android:textSize="15sp"
         android:textColor="@color/colorTextView"/>
+
+    <TextView
+        android:id="@+id/solution_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="solution title"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/author_timestamp_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="author and timestamp"
+        android:textSize="10sp"
+        android:textColor="@color/colorAccent"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:id="@+id/question_scroll_view">
+        android:id="@+id/solution_content_scroll_view">
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/discussion_title_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/discussion_header"
+        android:textSize="20sp"
+        android:textColor="@color/colorAccent"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:id="@+id/discussion_scroll_view">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/question_scrollview_layout">
+            android:id="@+id/discussion_scrollview_layout">
 
-            <LinearLayout
-                android:id="@+id/q1_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
     <Button
-        android:id="@+id/add_question_button"
+        android:id="@+id/add_discussion_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/addQuestionButton"
         android:gravity="center"
-        android:text="@string/add_question"
+        android:text="@string/add_discussion"
         android:textColor="@color/addQuestionButtonText"
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/back_to_search_button"
+        android:id="@+id/back_to_solution_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/backToSearchButton"
         android:gravity="center"
-        android:text="@string/back_to_search"
+        android:text="@string/back_to_solution"
         android:textColor="@color/backToSearchButtonText"
         android:textSize="15sp" />
 

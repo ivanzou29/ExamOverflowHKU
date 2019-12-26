@@ -20,6 +20,7 @@
     <string name="label_search">ExamOverflow@HKU - Search</string>
     <string name="label_question">ExamOverflow@HKU - Questions</string>
     <string name="label_solution">ExamOverflow@HKU - Solutions</string>
+    <string name="label_discussion">ExamOverflow@HKU - Discussion</string>
 
     <string name="log_out">Log out</string>
     <string name="enter_course_code">Course code</string>
@@ -28,8 +29,10 @@
 
     <string name="add_question">Add an exam question</string>
     <string name="add_solution">Add a solution to this question</string>
+    <string name="add_discussion">Add discussion</string>
     <string name="back_to_search">Go back to search</string>
     <string name="back_to_question">Go back to Questions</string>
+    <string name="back_to_solution">Go back to Solutions page</string>
 
 
     <string name="academic_year_prompt">select an academic year</string>
@@ -54,6 +57,7 @@
 
     <string name="questions_header">Questions</string>
     <string name="solutions_header">Solutions</string>
+    <string name="discussion_header">Discussion</string>
 
     <string name="searching">Searching for course…</string>
     <string name="adding_question">Adding exam question number…</string>
@@ -61,4 +65,9 @@
     <string name="preparing_question_layout">Preparing questions layout…</string>
     <string name="preparing_solution_layout">Preparing solutions layout…</string>
     <string name="inspecting_question">Inspecting…</string>
+    <string name="unlocking_solution">Unlocking…</string>
+    <string name="unlock_solution">Unlock</string>
+
+    <string name="input_solution_title">Please enter solution title</string>
+    <string name="input_solution_content">Please enter solution content</string>
 </resources>

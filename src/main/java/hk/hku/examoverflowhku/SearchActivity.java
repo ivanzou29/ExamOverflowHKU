@@ -21,7 +21,6 @@ import hk.hku.examoverflowhku.UI.ProcessingDialog;
 public class SearchActivity extends AppCompatActivity {
 
     TextView greetingTextView;
-    TextView unlockTextView;
     Button logoutButton;
     TextView courseCodeTextView;
     EditText courseCodeText;
@@ -48,10 +47,8 @@ public class SearchActivity extends AppCompatActivity {
         name = sharedPreferences.getString("name", "");
 
         greetingTextView = findViewById(R.id.greeting_text_view);
-        unlockTextView = findViewById(R.id.unlock_remaining);
 
         greetingTextView.setText(greetingTextView.getText().toString() + name + "!");
-        unlockTextView.setText(unlockTextView.getText().toString() + Integer.toString(unlocks) + ".");
 
         logoutButton = findViewById(R.id.log_out_button);
         courseCodeTextView = findViewById(R.id.enter_course_code);

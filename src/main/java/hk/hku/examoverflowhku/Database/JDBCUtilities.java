@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import hk.hku.examoverflowhku.Model.Question;
+import hk.hku.examoverflowhku.Model.Solution;
 import hk.hku.examoverflowhku.Model.Student;
 
 public class JDBCUtilities {
@@ -207,6 +208,101 @@ public class JDBCUtilities {
         }
     }
 
+    public Collection<String> getSolutionTitlesByQuestionId(String questionId) {
+        String sql = "SELECT solution_title FROM Solution WHERE question_id = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, questionId);
+            ResultSet rs = ptmt.executeQuery();
+
+            ArrayList<String> solutionTitles = new ArrayList<String>();
+
+            while(rs.next()) {
+                solutionTitles.add(rs.getString("solution_title"));
+            }
+            return solutionTitles;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<String>();
+        }
+    }
+
+    public void insertSolution(Solution solution) {
+        String sql = "INSERT INTO Solution (question_id, solution_title, solution_content, timestamp, student_name) VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, solution.getQuestionId());
+            ptmt.setString(2, solution.getSolutionTitle());
+            ptmt.setString(3, solution.getSolutionContent());
+            ptmt.setDate(4, solution.getTimestamp());
+            ptmt.setString(5, solution.getStudentName());
+            ptmt.execute();
+            ptmt.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void increaseUnlock(String uid, int num) throws SQLException{
+        String sql = "UPDATE Unlocks SET Unlocks = Unlocks + ? WHERE uid = ?";
+        PreparedStatement ptmt = conn.prepareStatement(sql);
+        ptmt.setInt(1, num);
+        ptmt.setString(2, uid);
+        ptmt.execute();
+        ptmt.close();
+    }
+
+    public void decreaseUnlock(String uid, int num) throws SQLException{
+        String sql = "UPDATE Unlocks SET Unlocks = Unlocks - ? WHERE uid = ?";
+        PreparedStatement ptmt = conn.prepareStatement(sql);
+        ptmt.setInt(1, num);
+        ptmt.setString(2, uid);
+        ptmt.execute();
+        ptmt.close();
+    }
+
+    public String getSolutionContentBySolutionTitle(String solutionTitle) {
+        String sql = "SELECT solution_content FROM Solution WHERE solution_title = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, solutionTitle);
+            ResultSet rs = ptmt.executeQuery();
+            if (rs.next()) {
+                String solutionContent = rs.getString("solution_content");
+                ptmt.close();
+                return solutionContent;
+            } else {
+                ptmt.close();
+                return "System error";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "System error";
+        }
+    }
+
+    public String getStudentNameBySolutionTitle(String solutionTitle) {
+        String sql = "SELECT student_name FROM Solution WHERE solution_title = ?";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, solutionTitle);
+            ResultSet rs = ptmt.executeQuery();
+            if (rs.next()) {
+                String studentName = rs.getString("student_name");
+                ptmt.close();
+                return studentName;
+            } else {
+                ptmt.close();
+                return "System error";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "System error";
+        }
+    }
+
+
     public void closeConnection() {
         try {
             conn.close();
@@ -214,7 +310,6 @@ public class JDBCUtilities {
             e.printStackTrace();
         }
     }
-
 
 
 }

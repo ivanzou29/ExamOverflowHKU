@@ -27,15 +27,6 @@
                 android:textColor="@color/colorTextView"
                 android:textSize="15sp"/>
 
-            <TextView
-                android:id="@+id/unlock_remaining"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="  Your unlocks available: "
-                android:textColor="@color/colorTextView"
-                android:textSize="15sp"/>
-
         </LinearLayout>
 
         <TextView

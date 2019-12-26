@@ -34,6 +34,9 @@
         <activity
             android:name=".SolutionActivity"
             android:label="@string/label_solution"/>
+        <activity
+            android:name=".DiscussionActivity"
+            android:label="@string/label_discussion"/>
 
     </application>
 
