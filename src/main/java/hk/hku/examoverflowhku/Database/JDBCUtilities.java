@@ -109,22 +109,18 @@ public class JDBCUtilities {
         }
     }
 
-    public int getUnlocksByUid(String uid) {
+    public int getUnlocksByUid(String uid) throws SQLException {
         String sql = "SELECT Unlocks FROM Unlocks WHERE uid = ?";
-        try {
-            PreparedStatement ptmt = conn.prepareStatement(sql);
-            ptmt.setString(1, uid);
-            ResultSet rs = ptmt.executeQuery();
-            if (rs.next()) {
-                int unlocks = rs.getInt("unlocks");
-                ptmt.close();
-                return unlocks;
-            } else {
-                return -1;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
+        PreparedStatement ptmt = conn.prepareStatement(sql);
+        ptmt.setString(1, uid);
+        ResultSet rs = ptmt.executeQuery();
+        if (rs.next()) {
+            int unlocks = rs.getInt("unlocks");
+            ptmt.close();
+            return unlocks;
+        } else {
+            SQLException e = new SQLException();
+            throw e;
         }
     }
 
@@ -218,7 +214,7 @@ public class JDBCUtilities {
 
             ArrayList<String> solutionTitles = new ArrayList<String>();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 solutionTitles.add(rs.getString("solution_title"));
             }
             return solutionTitles;
@@ -245,7 +241,7 @@ public class JDBCUtilities {
         }
     }
 
-    public void increaseUnlock(String uid, int num) throws SQLException{
+    public void increaseUnlock(String uid, int num) throws SQLException {
         String sql = "UPDATE Unlocks SET Unlocks = Unlocks + ? WHERE uid = ?";
         PreparedStatement ptmt = conn.prepareStatement(sql);
         ptmt.setInt(1, num);
@@ -254,7 +250,7 @@ public class JDBCUtilities {
         ptmt.close();
     }
 
-    public void decreaseUnlock(String uid, int num) throws SQLException{
+    public void decreaseUnlock(String uid, int num) throws SQLException {
         String sql = "UPDATE Unlocks SET Unlocks = Unlocks - ? WHERE uid = ?";
         PreparedStatement ptmt = conn.prepareStatement(sql);
         ptmt.setInt(1, num);

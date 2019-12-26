@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     } catch (Exception e) {
                         waitingSharedPreferenceDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, "You might need to re-enter your credentials.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "You might need to enter your credentials.", Toast.LENGTH_LONG).show();
                     }
                 }
             });
