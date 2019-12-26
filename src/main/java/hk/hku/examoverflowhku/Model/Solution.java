@@ -1,8 +1,6 @@
 package hk.hku.examoverflowhku.Model;
 
-import net.sourceforge.jtds.jdbc.DateTime;
-
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Solution {
     private String questionId;
@@ -10,15 +8,15 @@ public class Solution {
     private String solutionContent;
 
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
-    private Date timestamp;
+    private Timestamp timestamp;
 
     public String getStudentName() {
         return studentName;

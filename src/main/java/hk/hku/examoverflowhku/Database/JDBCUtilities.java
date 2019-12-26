@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import hk.hku.examoverflowhku.Model.Discussion;
 import hk.hku.examoverflowhku.Model.Question;
 import hk.hku.examoverflowhku.Model.Solution;
 import hk.hku.examoverflowhku.Model.Student;
@@ -209,7 +210,7 @@ public class JDBCUtilities {
     }
 
     public Collection<String> getSolutionTitlesByQuestionId(String questionId) {
-        String sql = "SELECT solution_title FROM Solution WHERE question_id = ?";
+        String sql = "SELECT solution_title FROM Solution WHERE question_id = ? ORDER BY timestamp DESC";
         try {
             PreparedStatement ptmt = conn.prepareStatement(sql);
             ptmt.setString(1, questionId);
@@ -234,7 +235,7 @@ public class JDBCUtilities {
             ptmt.setString(1, solution.getQuestionId());
             ptmt.setString(2, solution.getSolutionTitle());
             ptmt.setString(3, solution.getSolutionContent());
-            ptmt.setDate(4, solution.getTimestamp());
+            ptmt.setTimestamp(4, solution.getTimestamp());
             ptmt.setString(5, solution.getStudentName());
             ptmt.execute();
             ptmt.close();
@@ -299,6 +300,47 @@ public class JDBCUtilities {
         } catch (SQLException e) {
             e.printStackTrace();
             return "System error";
+        }
+    }
+
+    public Collection<Discussion> getDiscussionsBySolutionTitle(String solutionTitle) {
+        String sql = "SELECT * FROM Discussion WHERE solution_title = ? ORDER BY timestamp ASC";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, solutionTitle);
+            ResultSet rs = ptmt.executeQuery();
+            ArrayList<Discussion> discussions = new ArrayList<Discussion>();
+            while (rs.next()) {
+                Discussion discussion = new Discussion();
+                discussion.setDiscussionId(rs.getString("discussion_id"));
+                discussion.setDiscussionContent(rs.getString("discussion_content"));
+                discussion.setSolutionTitle(rs.getString("solution_title"));
+                discussion.setTimestamp(rs.getTimestamp("timestamp"));
+                discussion.setStudentName(rs.getString("student_name"));
+                discussions.add(discussion);
+            }
+            ptmt.close();
+            return discussions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Discussion>();
+        }
+    }
+
+    public void insertDiscussion(Discussion discussion) {
+        String sql = "INSERT INTO Discussion (solution_title, discussion_content, discussion_id, timestamp, student_name) " +
+                "VALUES (?,?,?,?,?)";
+        try {
+            PreparedStatement ptmt = conn.prepareStatement(sql);
+            ptmt.setString(1, discussion.getSolutionTitle());
+            ptmt.setString(2, discussion.getDiscussionContent());
+            ptmt.setString(3, discussion.getDiscussionId());
+            ptmt.setTimestamp(4, discussion.getTimestamp());
+            ptmt.setString(5, discussion.getStudentName());
+            ptmt.execute();
+            ptmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -94,7 +94,7 @@ public class SolutionActivity extends AppCompatActivity {
         jdbcUtilities.openConnection();
 
         View view = View.inflate(this, R.layout.activity_question, null);
-        addingSolutionDialog = new ProcessingDialog(view, R.string.adding_question);
+        addingSolutionDialog = new ProcessingDialog(view, R.string.adding_solution);
         preparingDialog = new ProcessingDialog(view, R.string.preparing_solution_layout);
         inspectSolutionDialog = new ProcessingDialog(view, R.string.unlocking_solution);
 
@@ -145,7 +145,7 @@ public class SolutionActivity extends AppCompatActivity {
                                     Solution solution = new Solution();
                                     solution.setQuestionId(questionId);
                                     solution.setSolutionContent(solutionContent);
-                                    Date timestamp = new Date(System.currentTimeMillis());
+                                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                                     solution.setTimestamp(timestamp);
                                     solution.setSolutionTitle(solutionTitle + " " + timestamp.toString());
                                     solution.setStudentName(name);
@@ -153,7 +153,7 @@ public class SolutionActivity extends AppCompatActivity {
                                     jdbcUtilities.increaseUnlock(uid, 1);
                                     unlocks = unlocks + 1;
                                     String unlockText = unlockTextView.getText().toString();
-                                    unlockTextView.setText(unlockText.substring(0, unlockText.length() - 2) + Integer.toString(unlocks) + ".");
+                                    unlockTextView.setText(unlockText.substring(0, 26) + Integer.toString(unlocks) + ".");
 
                                     prepareScrollView();
                                     addingSolutionDialog.dismiss();
@@ -279,7 +279,7 @@ public class SolutionActivity extends AppCompatActivity {
                                             jdbcUtilities.decreaseUnlock(uid, 1);
                                             unlocks = unlocks - 1;
                                             String unlockText = unlockTextView.getText().toString();
-                                            unlockTextView.setText(unlockText.substring(0, unlockText.length() - 2) + Integer.toString(unlocks) + ".");
+                                            unlockTextView.setText(unlockText.substring(0, 26) + Integer.toString(unlocks) + ".");
 
                                             Intent myIntent = new Intent(SolutionActivity.this, DiscussionActivity.class);
                                             myIntent.putExtra("courseCode", courseCode);

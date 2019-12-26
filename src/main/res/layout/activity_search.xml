@@ -25,7 +25,8 @@
                 android:gravity="center"
                 android:text="Hello "
                 android:textColor="@color/colorTextView"
-                android:textSize="15sp"/>
+                android:textSize="15sp"
+                android:fontFamily="monospace"/>
 
         </LinearLayout>
 

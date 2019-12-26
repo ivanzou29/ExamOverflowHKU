@@ -1,28 +1,38 @@
 package hk.hku.examoverflowhku.Model;
 
-import net.sourceforge.jtds.jdbc.DateTime;
+import java.sql.Timestamp;
 
 public class Discussion {
-    private String issueTitle;
+    private String solutionTitle;
     private String discussionId;
     private String discussionContent;
 
-    public DateTime getTimestamp() {
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    private String studentName;
+
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(DateTime timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 
-    private DateTime timestamp;
+    private Timestamp timestamp;
 
-    public String getIssueTitle() {
-        return issueTitle;
+    public String getSolutionTitle() {
+        return solutionTitle;
     }
 
-    public void setIssueTitle(String issueTitle) {
-        this.issueTitle = issueTitle;
+    public void setSolutionTitle(String solutionTitle) {
+        this.solutionTitle = solutionTitle;
     }
 
     public String getDiscussionId() {

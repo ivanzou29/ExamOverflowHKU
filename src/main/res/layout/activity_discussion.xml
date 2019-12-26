@@ -12,8 +12,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="Course code and course title"
-        android:textSize="10sp"
-        android:textColor="@color/colorTextView"/>
+        android:textSize="15sp"
+        android:textColor="@color/colorTextView"
+        android:fontFamily="serif-monospace"/>
 
     <TextView
         android:id="@+id/academic_year_and_semester_and_question_view"
@@ -23,8 +24,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="Academic year and semester and Q.No."
-        android:textSize="15sp"
-        android:textColor="@color/colorTextView"/>
+        android:textSize="12sp"
+        android:textColor="@color/colorTextView"
+        android:fontFamily="serif-monospace"/>
 
     <TextView
         android:id="@+id/solution_title_view"
@@ -34,8 +36,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="solution title"
-        android:textSize="20sp"
-        android:textColor="@color/colorAccent"/>
+        android:textSize="15sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"/>
 
     <TextView
         android:id="@+id/author_timestamp_view"
@@ -54,6 +57,14 @@
         android:layout_margin="10dp"
         android:id="@+id/solution_content_scroll_view">
 
+        <TextView
+            android:id="@+id/solution_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextView"
+            android:text="solution content"
+            android:textSize="15sp"/>
+
 
     </ScrollView>
 
@@ -65,8 +76,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:text="@string/discussion_header"
-        android:textSize="20sp"
-        android:textColor="@color/colorAccent"/>
+        android:textSize="15sp"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"/>
 
     <ScrollView
         android:layout_width="match_parent"

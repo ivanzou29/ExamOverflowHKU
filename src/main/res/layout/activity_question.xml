@@ -16,7 +16,8 @@
             android:gravity="center"
             android:text="Hello "
             android:textColor="@color/colorTextView"
-            android:textSize="8sp"/>
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
 
     </LinearLayout>
 
@@ -29,7 +30,8 @@
         android:layout_marginEnd="5dp"
         android:text="Course code and course title"
         android:textSize="15sp"
-        android:textColor="@color/colorTextView"/>
+        android:textColor="@color/colorTextView"
+        android:fontFamily="serif-monospace"/>
 
     <TextView
         android:id="@+id/academic_year_and_semester_view"
@@ -40,7 +42,8 @@
         android:layout_marginEnd="5dp"
         android:text="Academic year and semester"
         android:textSize="10sp"
-        android:textColor="@color/colorTextView"/>
+        android:textColor="@color/colorTextView"
+        android:fontFamily="serif-monospace"/>
 
     <TextView
         android:id="@+id/question_title_view"
@@ -51,7 +54,8 @@
         android:layout_marginEnd="5dp"
         android:text="@string/questions_header"
         android:textSize="20sp"
-        android:textColor="@color/colorTextView"/>
+        android:textColor="@color/colorTextView"
+        android:fontFamily="monospace"/>
 
     <ScrollView
         android:layout_width="match_parent"
